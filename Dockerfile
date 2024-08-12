@@ -1,12 +1,15 @@
+#
 # Build stage
-FROM maven:3.9.5-eclipse-temurin-21-alpine AS build
-WORKDIR /app
+#
+FROM maven:4.0.0-jdk-21 AS build
 COPY . .
 RUN mvn clean package -Pprod -DskipTests
 
+#
 # Package stage
-FROM eclipse-temurin:21-jre-alpine
-WORKDIR /app
-COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar demo.jar
+#
+FROM openjdk:21-jdk-slim
+COPY --from=build /target/demo-0.0.1-SNAPSHOT.jar demo.jar
+# ENV PORT=8080
 EXPOSE 5453
-ENTRYPOINT ["java", "-jar", "demo.jar"]
+ENTRYPOINT ["java","-jar","demo.jar"]
