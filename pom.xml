@@ -101,8 +101,9 @@
 </dependency>
 
 	</dependencies>
-
+	<packaging>jar</packaging>
 	<build>
+		<finalName>demo-0.0.1-SNAPSHOT</finalName> <!-- This sets the JAR file name -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
