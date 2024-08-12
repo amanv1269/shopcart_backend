@@ -1,15 +1,29 @@
-#
 # Build stage
-#
-FROM maven:4.0.0-jdk-21 AS build
+FROM openjdk:21-jdk-slim AS build
+
+# Install Maven
+RUN apt-get update && apt-get install -y maven
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the project files
 COPY . .
+
+# Build the application
 RUN mvn clean package -Pprod -DskipTests
 
-#
 # Package stage
-#
 FROM openjdk:21-jdk-slim
-COPY --from=build /target/demo-0.0.1-SNAPSHOT.jar demo.jar
-# ENV PORT=8080
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the built artifact from the build stage
+COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar demo.jar
+
+# Expose the application port
 EXPOSE 5453
-ENTRYPOINT ["java","-jar","demo.jar"]
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "demo.jar"]
