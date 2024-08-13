@@ -33,7 +33,7 @@ public class AppConfig {
 					public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
 						// TODO Auto-generated method stub
 						CorsConfiguration cfg = new CorsConfiguration();
-						cfg.setAllowedOrigins(Arrays.asList("http://localhost:3000","https://shopcart-ivory.vercel.app/"));
+						cfg.setAllowedOrigins(Arrays.asList("http://localhost:3000","https://shopcart-ivory.vercel.app"));
 						cfg.setAllowedMethods(Collections.singletonList("*"));
 						cfg.setAllowCredentials(true);
 						cfg.setAllowedHeaders(Collections.singletonList("*"));
