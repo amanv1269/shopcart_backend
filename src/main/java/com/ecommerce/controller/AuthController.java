@@ -25,7 +25,7 @@ import com.ecommerce.service.CartService;
 import com.ecommerce.service.CustomerUserServiceImplementation;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 public class AuthController {
 
 	private UserReposatory userReposatory;
