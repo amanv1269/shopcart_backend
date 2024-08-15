@@ -161,6 +161,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.ecommerce.reposatory.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -172,14 +173,14 @@ import com.ecommerce.Exception.ProductException;
 import com.ecommerce.model.Category;
 import com.ecommerce.model.Product;
 import com.ecommerce.reposatory.CategoryReposatory;
-import com.ecommerce.reposatory.ProductReposatory;
+
 import com.ecommerce.request.CreateProductRequest;
 
 @Service
 public class ProductServiceImplementation implements ProductService {
 
 	@Autowired
-	private ProductReposatory productRepository;
+	private ProductRepository productRepository;
 	@Autowired
 	private CategoryReposatory categoryRepository;
 	@Autowired
