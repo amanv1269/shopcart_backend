@@ -33,3 +33,8 @@ public interface ProductReposatory extends JpaRepository<Product, Long> {
 			@Param("maxPrice") Integer maxPrice, @Param("minPrice") Integer minPrice,
 			@Param("minDiscount") Integer minDiscount);
 }
+
+
+	@Query("SELECT p FROM Product p WHERE p.category.name = :category")
+	List<Product> filterProductsByCategory(@Param("category") String category);
+}
