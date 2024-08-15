@@ -43,4 +43,11 @@ public class ProductController {
 		return new ResponseEntity<Product>(product, HttpStatus.ACCEPTED);
 	}
 
+
+	@GetMapping("/products/category")
+	ResponseEntity<List<Product>> findProductByCategory(@RequestParam("category") String category) throws ProductException {
+		List<Product> products = productService.findProductByCategory(category);
+		return new ResponseEntity<List<Product>>(products, HttpStatus.ACCEPTED);
+	}
+
 }
