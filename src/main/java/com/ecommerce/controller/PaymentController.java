@@ -110,7 +110,7 @@ public class PaymentController {
 			notify.put("email", true);
 			paymentLinkRequest.put("notify", notify);
 
-			paymentLinkRequest.put("callback_url", "http://localhost:3000/payment/" + orderId);
+			paymentLinkRequest.put("callback_url", "https://shopcart-ivory.vercel.app/" + orderId);
 			paymentLinkRequest.put("callback_method", "get");
 
 			PaymentLink payment = client.paymentLink.create(paymentLinkRequest);
